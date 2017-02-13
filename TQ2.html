@@ -223,9 +223,11 @@ legend_label=u'$m_2$')
 <p>Com este 'laboratório' observa-se que:
 	<ul>
 <li>o sistema em cadeia aberta é de primeira ordem e tende para um estado estacionário.</li>
-<li>por acaso o sistema em cadeia aberta pode estabilizar no set-point para a corrente de água fria toda aberta ($m_1$), mas quando se diminui um pouco esse caudal, a temperatura do tanque ultrapassa rapidamente o set-point.</li>
-<li>em cadeia fechada trata-se de um sistema de 1ª ordem com um controlador proporcional.</li>
-	<li>para um $k_c$ suficientemente alto a controlada passa quase a ser independente do caudal de água fria (perturbada) e toma valores perto do set-point, erros baixos e tanto menores quanto maior o ganho do controlador, $k_c$.
+<li>por acaso o sistema em cadeia aberta pode estabilizar no set-point para um determinado valor da corrente fria ($m_1$),
+	mas quando se diminui ou aumenta um pouco esse caudal, a temperatura do tanque rapidamente atinge outro valor que o de set-point.</li>
+<li>em cadeia fechada trata-se de um sistema de 1ª ordem com um controlador proporcional, embora com algumas particulariedades.</li>
+	<li>para um $k_c$ suficientemente alto a controlada passa quase a ser independente do caudal de água fria (perturbada)
+		e toma valores perto do set-point, erros baixos e tanto menores quanto maior o ganho do controlador, $k_c$.
 	<li>a vantagem do controlo é evidente uma vez que as perturbações são rapidamente compensadas pela manipulada ($m_2$) nunca queimando o utilizador.</li>
 	<li>no início, $t\simeq 0$, o tanque está tão frio que o controlador abre a corrente de água quente ao máximo ($m_2$, linha vermelha). Notar que se limitou esse valor a 20 kg/min.</li>
 </ul>
