@@ -87,16 +87,20 @@ m2=10.
 
 def dT3(m1,T3):
     return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
+
 tf=4.
 dt=0.01
+pf=2.
 T3=[0..int(tf/dt)]
-T3[0:2]=[20.,20.]
 M1=[0..int(tf/dt)]
-M1[0:2]=[10.,10.]
+i=0
+for t in srange(0,pf,dt):
+	T3[i]=20.
+	M1[i]=10.
+	i+=1
 @interact
 def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
-   i=1
-   for t in srange(dt,tf,dt):
+   for t in srange(pf,tf,dt):
         T3[i+1]=T3[i]+(m1*T1+m2*T2-(m1+m2)*T3[i])/rV*dt
 	M1[i+1]=m1
         i+=1
