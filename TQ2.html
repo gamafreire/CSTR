@@ -100,6 +100,7 @@ for t in srange(0,pf,dt):
 	ii+=1
 @interact
 def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
+   ii=int(pf/dt)
    for t in srange(pf,tf,dt):
         T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
 	M1[ii+1]=m1
