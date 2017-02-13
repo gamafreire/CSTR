@@ -94,7 +94,7 @@ pf=0.2
 T3=[0..int(tf/dt)]
 M1=[0..int(tf/dt)]
 ii=0
-for t in srange(0,pf,dt):
+for t in srange(0,pf+dt,dt):
 	T3[ii]=20.
 	M1[ii]=10.
 	ii+=1
