@@ -22,7 +22,8 @@
 </head>
 
 <body>
-<script>	document.body.style.background = "rgb(247, 251, 254) url('http://virtualabs.tecnico.ulisboa.pt/virtual/virtualtt.jpg') no-repeat center top";
+<script>	document.body.style.background = "rgb(247, 251, 254)
+	url('http://virtualabs.tecnico.ulisboa.pt/virtual/virtualtt.jpg') no-repeat center top";
 </script>
 
 
@@ -34,11 +35,12 @@ An Interactive Applet powered by Sage and MathJax.</p>
 <hr>
 
 <h2>Sumário</h2>
-<p>Consegue regular a temperatura do seu banho? Sem se queimar, veja como se regula a temperatura do chuveiro enquanto toma banho.</p>
+<p>Consegue regular a temperatura do seu banho? Sem se queimar, veja como se regula a temperatura do
+	chuveiro enquanto toma banho.</p>
 
 <h2>Introdução</h2>
-	<p>Um tanque perfeitamente agitado de volume constante é alimentado por duas correntes de um mesmo líquido. Se variarem as temperaturas, $T_1\ e\ T_2$ ou os caudais, $m_1\ e\ m_2$ de cada uma das correntes. Como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</p>
-
+<p>No banho, regula a temperatura da água através de uma válvula (torneira de mistura) que regula em simultâneo
+	o caudal de água fria e quente. Este processo á parecido como o que se descreve a figura abaixo.</p>
 <table style="margin-left: 120px;" border="0">
 <tbody>
 <tr>
@@ -56,6 +58,11 @@ An Interactive Applet powered by Sage and MathJax.</p>
 </tr>
 </tbody>
 </table>
+	<p>O nosso chuveiro, quando se varia um dos caudais, demora um pouco a retomar a temperatura de estado estacioná	
+		rio. Vamos simular isso com o tanque. Assim o nosso sistema fica:</p>
+	<p>Um tanque perfeitamente agitado de volume constante é alimentado por duas correntes de um mesmo líquido.
+	Se variarem as temperaturas, $T_1\ e\ T_2$ ou os caudais, $m_1\ e\ m_2$ de cada uma das correntes.
+		Como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</p>
 <p>O sistema atendendo à definição, vai ter altura de líquido constante.</p>
 <p> A temperatura do tanque e por isso a da corrente de saída uma vez que há agitação perfeita, $T_3$, vai variar de acordo com</p>
 \[C_p\frac{d[\rho V(T_3-T_{ref})]}{dt}=m_1C_p(T_1-T_{ref})+m_2C_p(T_2-T_{ref})-m_3C_p(T_3-T_{ref})]\]
