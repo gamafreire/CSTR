@@ -27,19 +27,18 @@
 </script>
 
 
-  <h1><center>Temperatura de um Tanque - II</center></h1>
-<p>Baseado em <a href="https://sagecell.sagemath.org/" target="_top">The Sage Single-Cell Server</a><br>
+  <h1><center>Temperatura de um Chuveiro</center></h1>
+<p><a href="https://sagecell.sagemath.org/" target="_top">The Sage Single-Cell Server</a><br>
 An Interactive Applet powered by Sage and MathJax.</p>
 <h5>(PAX. IST-UL <i>Filipe Gama Freire</i>)</h5>
 
 <hr>
 
 <h2>Sumário</h2>
-<p>Consegue regular a temperatura do seu banho? Sem se queimar, veja como se regula a temperatura do
-	chuveiro enquanto toma banho.</p>
+<p>Consegue regular a temperatura do seu banho sem se queimar? Veja e experimente como regular a temperatura do seu banho.</p>
 
 <h2>Introdução</h2>
-<p>No banho, regula a temperatura da água através de uma válvula (torneira de mistura) que regula em simultâneo
+<p>No banho, regula a temperatura da água através de uma válvula (torneira de mistura) que normalmente regula em simultâneo
 	o caudal de água fria e quente. Este processo á parecido como o que se descreve a figura abaixo.</p>
 <table style="margin-left: 120px;" border="0">
 <tbody>
@@ -59,7 +58,7 @@ An Interactive Applet powered by Sage and MathJax.</p>
 </tbody>
 </table>
 	<p>O nosso chuveiro, quando se varia um dos caudais, demora um pouco a retomar a temperatura de estado estacionário.
-		Vamos simular isso com o tanque. Assim o nosso sistema fica:</p>
+		Neste caso vamos simular isso com um tanque. Assim o nosso sistema fica:</p>
 	
 	<p>Um tanque perfeitamente agitado de volume constante, alimentado por duas correntes de um mesmo líquido (água)
 		a temperaturas diferentes mas constantes ao longo do tempo.</p>
@@ -74,8 +73,12 @@ An Interactive Applet powered by Sage and MathJax.</p>
 \[\boxed{\large \rho V\ \frac{d\ T_3}{dt}=m_1\ T_1\ +\ m_2\ T_2\ -\ m_3\ T_3}\]
 	
 <h2>Instruções</h2>
+	<p>No nosso laboratório temos um sistema em que as temepraturas das duas corrente de entrada são fixas:<br>
+		$T_1\ =\ 20,0\ ºC$<br>
+		$T_2\ =\ 80,0\ ºC$<br>
+	O caudal de água quente também é fixo: $m_2\ 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>		
 <p>Carregue no botão abaixo $\boxed{\ Experimente\ agora\ }$ e altere o caudal de água fria ($m_1$), o que demora uns $0,2 s$ a acontecer, e observe
-	a variação da temperatura do tanque ('chuveiro') em função do tempo, não se queime.</p>
+	a variação da temperatura do tanque ('chuveiro') em função do tempo. Não se queime.</p>
 	<p>Faz-lhe lembrar alguma coisa?</p>
 
 <div class="compute">
@@ -125,9 +128,9 @@ legend_label=u'$m_1\ kg/min,\ 20^oC$')
 <ul>
 	<li>o sistema em cadeia aberta tende para um <a href='http://www2.peq.coppe.ufrj.br/Pessoal/Professores/Arge/COQ790/COQ790_Aula_1.pdf'>estado estacionário</a>.</li>
 	<li>o sistema tem uma resposta de 1ª ordem (<a href='http://users.isr.ist.utl.pt/~aguiar/respostas%20no%20tempo.pdf'> uma constante de tempo</a>).</li>
-	<li>a constante de tempo varia para cada m1. Pode observar isso na experiência
+	<li>a constante de tempo varia para cada m1. Pode observar isso na experiência?
 		<ul>
-			<li>sim, o tempo para se atingir $T_3$ estacionária é tanto maior quanto menor $m_1$, uma vez que $\tau=\frac{V}{m_3}$.
+			<li>sim. O tempo para se atingir $T_3$ estacionária é tanto maior quanto menor $m_1$, uma vez que $\tau=\frac{V}{m_3}$.
 			</li>
 		</ul>
 	</li>
