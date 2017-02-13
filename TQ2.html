@@ -193,21 +193,15 @@ controlo = ['Off','On'],\
 kc=slider(0.1,5.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
     ii=int(pf/dt)
     for t in srange(pf,tf,dt):
-        T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
-	M1[ii+1]=m1
-	M2[ii+1]=m2
-        ii+=1
-    for t in srange(pf,tf,dt):
          if controlo=='Off':
              T3[ii+1]=T3[ii]+dT3(m1,T3[ii])*dt
              M2[ii+1]=m2
 	     M1[ii+1]=m1
          else:
-             m2=kc*(SP-T3[ii])
-             if m2>=20.:m2=20.
-             T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
+             M2[i+1]=kc*(SP-T3[ii])
+             if M2[i+1]>=20.:M2[i+1]=20.
+             T3[ii+1]=T3[ii]+(m1*T1+M2[i+1]*T2-(m1+M2[i+1])*T3[ii])/rV*dt
 	     M1[ii+1]=m1
-	     M2[ii+1]=m2
          ii+=1
     poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ ^oC$',fontsize=6)
     poi+=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
