@@ -71,13 +71,14 @@ An Interactive Applet powered by Sage and MathJax.</p>
 \[C_p\frac{d[\rho V(T_3-T_{ref})]}{dt}=m_1C_p(T_1-T_{ref})+m_2C_p(T_2-T_{ref})-m_3C_p(T_3-T_{ref})]\]
 <p>Cancelando as constantes do sistema</p>
 \[\boxed{\large \rho V\ \frac{d\ T_3}{dt}=m_1\ T_1\ +\ m_2\ T_2\ -\ m_3\ T_3}\]
-	
+A resolução desta equação dá a variação da temperatura do chuveiro $T_3$ se soubermos qual a temperatura inicial da água do tanque. Digamos que está à temperatura ambiente $T_{3_{t=0}}\ =\ T_{amb.}$	
 <h2>Instruções</h2>
-	<p>No nosso laboratório temos um sistema em que as tempraturas das duas corrente de entrada são fixas:<br>
+	<p>No nosso laboratório temos um sistema em que as temperaturas das duas corrente de entrada são fixas:<br>
 		$T_1\ =\ 20,0\ ºC$<br>
 		$T_2\ =\ 80,0\ ºC$<br>
-	O caudal de água quente também é fixo: $m_2\ =\ 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>		
-<p>Carregue no botão abaixo $\boxed{\ Experimente\ agora\ }$ e observe como a temperatura do chuveiro varia ($T_{amb.}=20ºC$.
+	O caudal de água quente também é fixo: $m_2\ =\ 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>
+	<p>Ainda se considerou que as alterações apenas ocorrem aos $0,2\ s$</p>
+<p>Carregue no botão abaixo $\boxed{\ Experimente\ agora\ }$ e observe como a temperatura do chuveiro varia ($T_{amb.}\ =\ 20ºC)$.
 	Altere o caudal de água fria ($m_1$), o que demora uns $0,2 s$ a acontecer, e observe
 	a variação da temperatura do tanque ('chuveiro') em função do tempo. Não se queime.</p>
 	<p>Faz-lhe lembrar alguma coisa?</p>
@@ -97,10 +98,12 @@ dt=0.01
 pf=0.2
 T3=[0..int(tf/dt)]
 M1=[0..int(tf/dt)]
+M2=[0..int(tf/dt)]
 ii=0
 for t in srange(0,pf+dt,dt):
 	T3[ii]=20.
-	M1[ii]=10.
+	M1[ii]=0.
+	M2[ii]=0.
 	ii+=1
 @interact
 def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
@@ -108,11 +111,12 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
    for t in srange(pf,tf,dt):
         T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
 	M1[ii+1]=m1
+	M2[ii+1]=m2
         ii+=1
     
    poi=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
 plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
-   poi+=list_plot(zip(srange(0,tf,dt),[10. for i in T3]),plotjoined=True,color='red',\
+   poi+=list_plot(zip(srange(0,tf,dt),[i for i in M2]),plotjoined=True,color='red',\
 legend_label=u'$m_2\ kg/min,\ 80^oC$')
    poi+=list_plot(zip(srange(0,tf,dt),[i for i in M1]),plotjoined=True,color='green',\
 legend_label=u'$m_1\ kg/min,\ 20^oC$')
