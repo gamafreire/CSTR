@@ -209,7 +209,7 @@ kc=slider(0.1,5.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
              T3[ii+1]=T3[ii]+(m1*T1+M2[ii+1]*T2-(m1+M2[ii+1])*T3[ii])/rV*dt
 	     M1[ii+1]=m1
          ii+=1
-    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ ^oC$',fontsize=6)
+    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ \ ^oC$',fontsize=6)
     poi+=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
 plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3$',fontsize=6)
     poi+=list_plot(zip(srange(0,tf,dt),[i for i in M1]),plotjoined=True,color='green',\
