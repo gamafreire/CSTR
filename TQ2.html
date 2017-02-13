@@ -86,8 +86,8 @@ T1=20.
 
 def dT3(m1,T3):
     return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
-tf=3.
-dt=0.01
+tf=4.
+dt=0.1
 T3=[0..int(tf/dt)]
 m2=[0..int(tf/dt)]
 T3[0:2]=[20.,20.]
@@ -103,7 +103,7 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
         i+=1
     
    poi=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
-plotjoined=True,figsize=3, ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
+plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
    poi+=list_plot(zip(srange(0,tf,dt),[i for i in m2]),plotjoined=True,color='red',\
 legend_label=u'$m_2\ kg/min,\ 80^oC$')
    poi+=list_plot(zip(srange(0,tf,dt),[m1 for i in m2]),plotjoined=True,color='green',\
