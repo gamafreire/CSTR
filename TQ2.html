@@ -93,10 +93,9 @@ T3[0]=20.
 SP=40.
 @interact
 def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
-    m2[0]=9.7
-   
-    i=0
-    for t in srange(0,tf,dt):
+   m2[0]=9.7
+   i=0
+   for t in srange(0,tf,dt):
     	m2[i+1]=kc*(SP-T3[i])
         if m2[i+1]>=20.:m2[i+1]=20.
         T3[i+1]=T3[i]+(m1*T1+m2[i]*T2-(m1+m2[i])*T3[i])/rV*dt
@@ -104,12 +103,12 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
     
    poi=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , kg/min"),\
 plotjoined=True,figsize=3, ymin=0, ymax=50,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
-    poi+=list_plot(zip(srange(0,tf,dt),[i for i in m2]),plotjoined=True,color='red',\
+   poi+=list_plot(zip(srange(0,tf,dt),[i for i in m2]),plotjoined=True,color='red',\
 legend_label=u'$m_2\ kg/min,\ 80^oC$')
-    poi+=list_plot(zip(srange(0,tf,dt),[m1 for i in m2]),plotjoined=True,color='green',\
+   poi+=list_plot(zip(srange(0,tf,dt),[m1 for i in m2]),plotjoined=True,color='green',\
 legend_label=u'$m_1\ kg/min,\ 20^oC$')
-    poi.set_legend_options(loc=(-1.2,0.4));
-    show(poi)
+   poi.set_legend_options(loc=(-1.2,0.4));
+   show(poi)
 </script>
 </div>
 <p></p>
