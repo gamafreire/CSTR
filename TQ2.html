@@ -71,10 +71,10 @@ An Interactive Applet powered by Sage and MathJax.</p>
 <p> A temperatura do tanque e por isso a da corrente de saída uma vez que há agitação perfeita, $T_3$, vai variar de acordo com</p>
 \[C_p\frac{d[\rho V(T_3-T_{ref})]}{dt}=m_1C_p(T_1-T_{ref})+m_2C_p(T_2-T_{ref})-m_3C_p(T_3-T_{ref})]\]
 <p>Cancelando as constantes do sistema</p>
-\[\boxed{\rho V\frac{dT_3}{dt}=m_1T_1+m_2T_2-m_3T_3}\]
+\[\big{\boxed{\rho V\frac{dT_3}{dt}=m_1T_1+m_2T_2-m_3T_3}}\]
 	
 <h2>Instruções</h2>
-<p>Carregue no botão abaixo (Experimente agora) e altere os 'slider' à sua vontade e observe a variação da temperatura do tanque em função do tempo.</p>
+<p>Carregue no botão abaixo (Experimente agora) e altere o caudal de água fria ($m_1$) à sua vontade e observe a variação da temperatura do tanque em função do tempo.</p>
 	<p>Faz lembrar qualquer coisa?</p>
 
 <div class="compute">
@@ -102,7 +102,7 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
         i+=1
     
    poi=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , kg/min"),\
-plotjoined=True,figsize=3, ymin=0, ymax=50,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
+plotjoined=True,figsize=3, ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)   
    poi+=list_plot(zip(srange(0,tf,dt),[i for i in m2]),plotjoined=True,color='red',\
 legend_label=u'$m_2\ kg/min,\ 80^oC$')
    poi+=list_plot(zip(srange(0,tf,dt),[m1 for i in m2]),plotjoined=True,color='green',\
