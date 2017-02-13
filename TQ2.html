@@ -76,7 +76,7 @@ An Interactive Applet powered by Sage and MathJax.</p>
 	<p>No nosso laboratório temos um sistema em que as temepraturas das duas corrente de entrada são fixas:<br>
 		$T_1\ =\ 20,0\ ºC$<br>
 		$T_2\ =\ 80,0\ ºC$<br>
-	O caudal de água quente também é fixo: $m_2\ 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>		
+	O caudal de água quente também é fixo: $m_2\ =\ 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>		
 <p>Carregue no botão abaixo $\boxed{\ Experimente\ agora\ }$ e altere o caudal de água fria ($m_1$), o que demora uns $0,2 s$ a acontecer, e observe
 	a variação da temperatura do tanque ('chuveiro') em função do tempo. Não se queime.</p>
 	<p>Faz-lhe lembrar alguma coisa?</p>
@@ -166,20 +166,25 @@ T1=20.
 
 def dT3(m1,T3):
     return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
-tf=2.
+tf=4.
 dt=0.01
 T3=[0..int(tf/dt)]
 m2=[0..int(tf/dt)]
-T3[0]=20.
 SP=40.
+pf=0.2
+M1=[0..int(tf/dt)]
+ii=0
+for t in srange(0,pf+dt,dt):
+	T3[ii]=20.
+	M1[ii]=10.
+	m2[ii]=10.
+	ii+=1
 @interact
 def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),\
 controlo = ['Off','On'],\
 kc=slider(0.1,5.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
-    m2[0]=9.7
-   
-    i=0
-    for t in srange(0,tf,dt):
+    ii=int(pf/dt)
+    for t in srange(pf,tf,dt):
          if controlo=='Off':
              T3[i+1]=T3[i]+dT3(m1,T3[i])*dt
              m2[i+1]=m2[i]
@@ -206,7 +211,7 @@ legend_label=u'$m_1\ kg/min,\ 20^oC$')
 
 <p>Com este 'laboratório' observa-se que:
 	<ul>
-<li>o sistema em cadeia aberta tende para um estado estacionário.</li>
+<li>o sistema em cadeia aberta é de primeira ordem e tende para um estado estacionário.</li>
 <li>por acaso o sistema em cadeia aberta pode estabilizar no set-point para a corrente de água fria toda aberta ($m_1$), mas quando se diminui um pouco esse caudal, a temperatura do tanque ultrapassa rapidamente o set-point.</li>
 <li>em cadeia fechada trata-se de um sistema de 1ª ordem com um controlador proporcional.</li>
 	<li>para um $k_c$ suficientemente alto a controlada passa quase a ser independente do caudal de água fria (perturbada) e toma valores perto do set-point, erros baixos e tanto menores quanto maior o ganho do controlador, $k_c$.
