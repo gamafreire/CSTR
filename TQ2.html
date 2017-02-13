@@ -35,11 +35,14 @@ An Interactive Applet powered by Sage and MathJax.</p>
 <hr>
 
 <h2>Sumário</h2>
-<p>Consegue regular a temperatura do seu banho sem se queimar? Veja e experimente como regular a temperatura do seu banho.</p>
+	<p>Consegue regular a temperatura do seu banho sem se queimar?</p>
+	<p>Com um sistem muito simples, análogo à temperatura do chuveiro de um banho, introduzem-se noçõ	
+		es básicas da dinâmica de sistema e controlo de processos.</p>
+	<p>Veja e experimente como regular a temperatura do seu banho.</p>
 
 <h2>Introdução</h2>
-<p>No banho, regula a temperatura da água através de uma válvula (torneira de mistura) que normalmente regula em simultâneo
-	o caudal de água fria e quente. Este processo á parecido como o que se descreve a figura abaixo.</p>
+<p>No banho, regula a temperatura da água através de uma válvula (torneira de mistura) que normalmente regula
+	o caudal de água fria ou quente. Este processo á parecido como o que se descreve a figura abaixo.</p>
 <table style="margin-left: 120px;" border="0">
 <tbody>
 <tr>
@@ -57,14 +60,12 @@ An Interactive Applet powered by Sage and MathJax.</p>
 </tr>
 </tbody>
 </table>
-	<p>O nosso chuveiro, quando se varia um dos caudais, demora um pouco a retomar a temperatura de estado estacionário.
+<p>O nosso chuveiro, quando se varia um dos caudais, demora um pouco a retomar a temperatura de estado estacionário.
 		Neste caso vamos simular isso com um tanque. Assim o nosso sistema fica:</p>
-	
-	<p>Um tanque perfeitamente agitado de volume constante, alimentado por duas correntes de um mesmo líquido (água)
+<p>Um tanque perfeitamente agitado de volume constante, alimentado por duas correntes de um mesmo líquido (água)
 		a temperaturas diferentes mas constantes ao longo do tempo.</p>
-	
-	<p>Se variarem as temperaturas, $T_1\ e\ T_2$ ou os caudais, $m_1\ e\ m_2$ de cada uma das correntes,
-		como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</p>
+<h4>Se variarem as temperaturas, $T_1\ e\ T_2$ ou os caudais, $m_1\ e\ m_2$ de cada uma das correntes,
+	como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</h4>
 	
 <p>O sistema, atendendo à definição, vai ter altura de líquido constante.</p>
 <p> A temperatura do 'chuveiro' (que é a do tanque e por isso também a da corrente de saída uma vez que há agitação perfeita),
@@ -74,17 +75,18 @@ An Interactive Applet powered by Sage and MathJax.</p>
 \[\boxed{\large \rho V\ \frac{d\ T_3}{dt}=m_1\ T_1\ +\ m_2\ T_2\ -\ m_3\ T_3}\]
 A resolução desta equação dá a variação da temperatura do chuveiro $T_3$ se soubermos qual a temperatura inicial da água
 	do tanque. Digamos que está à temperatura ambiente $T_{3_{t=0}}\ =\ T_{amb.}$
-	<h2>Sistema não regulado</h2>
+
+<h2>Sistema não regulado</h2>
 <h3>Instruções</h3>
-	<p>No nosso laboratório temos um sistema em que as temperaturas das duas corrente de entrada são fixas:<br>
+<p>No nosso laboratório temos um sistema em que as temperaturas das duas corrente de entrada são fixas:<br>
 		<center>$T_1\ =\ 20,0\ ºC$<br>
 			$T_2\ =\ 80,0\ ºC$<br></center>
 	O caudal de água quente também é fixo: $m_2 = 10\ kg/min$ apenas podendo variar o caudal de água fria.</p>
-	<p>Ainda se considerou que o tanque começa a ser alimentado apenas aos $0,2\ s$ para cada nova simulação.</p>
+<p>Ainda se considerou que o tanque começa a ser alimentado apenas aos $0,2\ s$ para cada nova simulação.</p>
 	
 <p>Carregue no botão abaixo $\boxed{\ \text{Experimente agora}\ }$ e observe como a temperatura do chuveiro varia desde a 
-	$T_{amb.} = 20\ ºC$ até ao estado estacionário, para cada uma das situações impostas.
-	Não se queime.</p>
+	$T_{amb.} = 20\ ºC$ até ao estado estacionário, para cada uma das situações escolhidas (caudal de água fria $m_1$).</p>
+<p>Não se queime!</p>
 
 <div class="compute">
 <script type="text/x-sage">
@@ -94,7 +96,7 @@ T1=20.
 m2=10.
 
 def dT3(m1,T3):
-    return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
+    return (m1*T1+m2*T2-(m1+m2)*T3)/rV
 
 tf=4.
 dt=0.01
@@ -163,7 +165,7 @@ legend_label=u'$m_2$')
 	</tr>
 	</tbody>
 	</table>
-<h2>Instruções</h2>
+<h3>Instruções</h3>
 <p>Estude a dinâmica do sistema, observando a variação da temperatura do banho ao variar o caudal da corrente de água fria.</p>
 <p>Notar que no gráfico as ordenadas são ºC como em kg/min (kg/min) tal como indicado.</p>
 <p>Estude a influ&ecirc;ncia de $k_c$ na resposta do sistema.</p>
