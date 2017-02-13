@@ -68,7 +68,7 @@ An Interactive Applet powered by Sage and MathJax.</p>
 		Como variará a temperatura de saída do tanque $T_3$, a temperatura do seu banho?</p>
 	
 <p>O sistema atendendo à definição, vai ter altura de líquido constante.</p>
-<p> A temperatura do tanque e por isso a da corrente de saída uma vez que há agitação perfeita, $T_3$, vai variar de acordo com</p>
+<p> A temperatura do 'chuveiro' (que é a do tanque e por isso também a da corrente de saída uma vez que há agitação perfeita), $T_3$, vai variar de acordocom</p>
 \[C_p\frac{d[\rho V(T_3-T_{ref})]}{dt}=m_1C_p(T_1-T_{ref})+m_2C_p(T_2-T_{ref})-m_3C_p(T_3-T_{ref})]\]
 <p>Cancelando as constantes do sistema</p>
 \[\boxed{\Large \rho V\ \frac{d\ T_3}{dt}=m_1\ T_1\ +\ m_2\ T_2\ -\ m_3\ T_3}\]
@@ -88,7 +88,7 @@ m2=10.
 def dT3(m1,T3):
     return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
 tf=4.
-dt=0.1
+dt=0.01
 T3=[0..int(tf/dt)]
 T3[0:2]=[20.,20.]
 M1=[0..int(tf/dt)]
