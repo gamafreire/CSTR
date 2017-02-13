@@ -173,7 +173,7 @@ T1=20.
 m2=10.
 
 def dT3(m1,T3):
-    return (m1*T1+m2[0]*T2-(m1+m2[0])*T3)/rV
+    return (m1*T1+m2*T2-(m1+m2)*T3)/rV
 tf=4.
 dt=0.01
 pf=0.2
@@ -203,9 +203,9 @@ kc=slider(0.1,5.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
              M2[ii+1]=m2
 	     M1[ii+1]=m1
          else:
-             m2[ii+1]=kc*(SP-T3[ii])
-             if m2[ii+1]>=20.:m2[ii+1]=20.
-             T3[ii+1]=T3[ii]+(m1*T1+m2[ii]*T2-(m1+m2[ii])*T3[ii])/rV*dt
+             m2=kc*(SP-T3[ii])
+             if m2>=20.:m2=20.
+             T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
 	     M1[ii+1]=m1
 	     M2[ii+1]=m2
          ii+=1
