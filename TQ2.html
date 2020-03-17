@@ -111,7 +111,7 @@ for t in srange(0,pf+dt,dt):
 	M2[ii]=0.
 	ii+=1
 @interact
-def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
+def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\\ (kg/min,\\ 20ºC)$'),):
    ii=int(pf/dt)
    for t in srange(pf,tf,dt):
         T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
@@ -120,15 +120,15 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
         ii+=1
     
    poi=list_plot(list(zip(srange(0,tf,dt),T3)), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
-plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)
+plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\\ ^oC$',fontsize=6)
    poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M1]),plotjoined=True,color='green',\
-legend_label=u'$m_1\ kg/min$')
+legend_label=u'$m_1\\ kg/min$')
    poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M2]),plotjoined=True,color='red',\
 legend_label=u'$m_2$')
    poi.set_legend_options(loc=(-0.5,0.4));
    show(poi)
    ti=(m1*T1+m2*T2)/(m1+m2)
-   print(html('\[ \lim_{t \\rightarrow \infty}T_3= %.1f\ ºC\]'%ti))
+   print(html('\[ \lim_{t \\rightarrow \\infty}T_3= %.1f\\ ºC\]'%ti))
 </script>
 </div>
 	<p></p>
@@ -210,12 +210,12 @@ kc=slider(0.1,4.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
              T3[ii+1]=T3[ii]+(m1*T1+M2[ii+1]*T2-(m1+M2[ii+1])*T3[ii])/rV*dt
 	     M1[ii+1]=m1
          ii+=1
-    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ \ ^oC$',fontsize=6)
-    poi+=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
+    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\\ \\ ^oC$',fontsize=6)
+    poi+=list_plot(list(zip(srange(0,tf,dt),T3)), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
 plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3$',fontsize=6)
-    poi+=list_plot(zip(srange(0,tf,dt),[i for i in M1]),plotjoined=True,color='green',\
-legend_label=u'$m_1\ kg/min$')
-    poi+=list_plot(zip(srange(0,tf,dt),[i for i in M2]),plotjoined=True,color='red',\
+    poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M1]),plotjoined=True,color='green',\
+legend_label=u'$m_1\\ kg/min$')
+    poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M2]),plotjoined=True,color='red',\
 legend_label=u'$m_2$')
     poi.set_legend_options(loc=(-0.5,0.4));
     show(poi)
