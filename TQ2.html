@@ -119,11 +119,11 @@ def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
 	M2[ii+1]=m2
         ii+=1
     
-   poi=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
+   poi=list_plot(list(zip(srange(0,tf,dt),T3)), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
 plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)
-   poi+=list_plot(zip(srange(0,tf,dt),[i for i in M1]),plotjoined=True,color='green',\
+   poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M1]),plotjoined=True,color='green',\
 legend_label=u'$m_1\ kg/min$')
-   poi+=list_plot(zip(srange(0,tf,dt),[i for i in M2]),plotjoined=True,color='red',\
+   poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M2]),plotjoined=True,color='red',\
 legend_label=u'$m_2$')
    poi.set_legend_options(loc=(-0.5,0.4));
    show(poi)
