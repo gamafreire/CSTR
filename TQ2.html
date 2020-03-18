@@ -90,45 +90,44 @@ A resolução desta equação dá a variação da temperatura do chuveiro $T_3$ 
 
 <div class="compute">
 <script type="text/x-sage">
+from numpy import zeros
 rV=10.
 T2=80.
 T1=20.
 m2=10.
 
 def dT3(m1,T3):
-    return (m1*T1+m2*T2-(m1+m2)*T3)/rV
+	return (m1*T1+m2*T2-(m1+m2)*T3)/rV
 
 tf=4.
 dt=0.01
 pf=0.2
-T3=[0..int(tf/dt)]
-M1=[0..int(tf/dt)]
-M2=[0..int(tf/dt)]
+T3=zeros(int(tf/dt))
+M1=zeros(int(tf/dt))
+M2=zeros(int(tf/dt))
+
 ii=0
-for t in srange(0,pf+dt,dt):
+for t in srange(0,tf,dt):
 	T3[ii]=20.
-	M1[ii]=0.
-	M2[ii]=0.
-	ii+=1
-@interact
-def _(m1=slider(1,20.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),):
-	ii=int(pf/dt)
-	for t in srange(pf,tf,dt):
-		T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
-	M1[ii+1]=m1
-	M2[ii+1]=m2
+	M1[ii]=10
+	M2[ii]=m2
 	ii+=1
 
+@interact
+def _(m1=slider(1,20.,1.0.n(12),10.,label=u'$m_1\\ (kg/min), 20ºC)$'),m2=slider(1,20.,1.0.n(12),10.,label=u'$m_2\\ (kg/min), 80ºC)$')):
+	ii=0 #int(pf/dt)
+	for t in srange(0,tf-dt,dt):
+		T3[ii+1]=T3[ii]+(m1*T1+m2*T2-(m1+m2)*T3[ii])/rV*dt
+		M1[ii+1]=m1
+		M2[ii+1]=m2
+		ii+=1
+
 	poi=list_plot(list(zip(srange(0,tf,dt),T3)), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
-plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\ ^oC$',fontsize=6)
-   poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M1]),plotjoined=True,color='green',\
-legend_label=u'$m_1\ kg/min$')
-   poi+=list_plot(list(zip(srange(0,tf,dt)),[i for i in M2]),plotjoined=True,color='red',\
-legend_label=u'$m_2$')
-   poi.set_legend_options(loc=(-0.5,0.4));
-   show(poi)
-   ti=(m1*T1+m2*T2)/(m1+m2)
-   print(html('\[ \lim_{t \\rightarrow \infty}T_3= %.1f\ ºC\]'%ti))
+	plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3\\ ^oC$',fontsize=6)
+	poi.set_legend_options(loc=(0.8,0));
+	show(poi)
+	ti=(m1*T1+m2*T2)/(m1+m2)
+	pretty_print(html('\\[ \\lim_{t \\rightarrow \\infty}T_3= %.1f\\ ºC\\]'%ti))
 </script>
 </div>
 	<p></p>
@@ -180,7 +179,7 @@ m2=10.
 SP=50.
 
 def dT3(m1,T3):
-    return (m1*T1+m2*T2-(m1+m2)*T3)/rV
+	return (m1*T1+m2*T2-(m1+m2)*T3)/rV
 tf=4.
 dt=0.01
 pf=0.2
@@ -190,35 +189,35 @@ M2=[0..int(tf/dt)]
 ii=0
 for t in srange(0,pf+dt,dt):
 	T3[ii]=20.
-	M1[ii]=0.
-	M2[ii]=0.
+	M1[ii]=10
+	M2[ii]=m2
 	ii+=1
 	
 @interact
-def _(m1=slider(1,30.,1.0.n(12),10.,label='$m_1\ (kg/min,\ 20ºC)$'),\
+def _(m1=slider(1,30.,1.0.n(12),10.,label='$m_1\\ (kg/min,\\ 20ºC)$'),\
 controlo = ['Off','On'],\
 kc=slider(0.1,4.0.n(12),0.1.n(12),1.0,label='$k_c$' ),):
-    ii=int(pf/dt)
-    for t in srange(pf,tf,dt):
-         if controlo=='Off':
-             T3[ii+1]=T3[ii]+dT3(m1,T3[ii])*dt
-             M2[ii+1]=m2
-	     M1[ii+1]=m1
-         else:
-             M2[ii+1]=m2+kc*(SP-T3[ii])
-             if M2[ii+1]>=20.:M2[ii+1]=20.
-             T3[ii+1]=T3[ii]+(m1*T1+M2[ii+1]*T2-(m1+M2[ii+1])*T3[ii])/rV*dt
-	     M1[ii+1]=m1
-         ii+=1
-    poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\ \ ^oC$',fontsize=6)
-    poi+=list_plot(zip(srange(0,tf,dt),T3), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
+	ii=int(pf/dt)
+	for t in srange(pf,tf,dt):
+		if controlo=='Off':
+			T3[ii+1]=T3[ii]+dT3(m1,T3[ii])*dt
+			M2[ii+1]=m2
+			M1[ii+1]=m1
+		else:
+			M2[ii+1]=m2+kc*(SP-T3[ii])
+			if M2[ii+1]>=20.:M2[ii+1]=20.
+			T3[ii+1]=T3[ii]+(m1*T1+M2[ii+1]*T2-(m1+M2[ii+1])*T3[ii])/rV*dt
+			M1[ii+1]=m1
+		ii+=1
+	poi=line([(0,SP),(tf,SP)],color='black',linestyle='--',legend_label='$SP\\ \\ ^oC$',fontsize=6)
+	poi+=list_plot(list(zip(srange(0,tf,dt),T3)), axes_labels=('t [min.]',u"[ºC] , [kg/min]"),\
 plotjoined=True,figsize=[4,3], ymin=0, ymax=80,thickness=2,gridlines=True,legend_label=u'$T_3$',fontsize=6)
-    poi+=list_plot(zip(srange(0,tf,dt),[i for i in M1]),plotjoined=True,color='green',\
-legend_label=u'$m_1\ kg/min$')
-    poi+=list_plot(zip(srange(0,tf,dt),[i for i in M2]),plotjoined=True,color='red',\
+	poi+=list_plot(list(zip(srange(0,tf,dt),[i for i in M1])),plotjoined=True,color='green',\
+legend_label=u'$m_1\\ kg/min$')
+	poi+=list_plot(list(zip(srange(0,tf,dt),[i for i in M2])),plotjoined=True,color='red',\
 legend_label=u'$m_2$')
-    poi.set_legend_options(loc=(-0.5,0.4));
-    show(poi)
+	poi.set_legend_options(loc=(0.5,0.9));
+	show(poi)
 </script>
 </div>
 <p></p>
